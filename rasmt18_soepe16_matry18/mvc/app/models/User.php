@@ -53,4 +53,6 @@ class User extends Database
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    
 }

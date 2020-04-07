@@ -10,13 +10,14 @@ class ApiController extends Controller {
 	
 	public function index ($param) {
 
-	}
-	
-	public function pictures () {
-		$user_id = $this->model('Image')->getUserImages();
-		print_r($user_id); //bruges kun til test
-		echo json_encode($user_id, JSON_PRETTY_PRINT);
 
-	}
-	
+    }
+
+    public function pictures() {
+
+        $user_id = $this->model('Image')->getUserImages();
+        print_r($user_id);
+        echo json_encode($user_id, JSON_PRETTY_PRINT);
+    }
+
 }
