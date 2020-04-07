@@ -3,7 +3,7 @@
 class ApiController extends Controller {
 
 	public function __construct () {
-		hearder('Content-Type: application/json');
+		header('Content-Type: application/json');
 		//check brugernavn og password
 		//or die();
 	}
