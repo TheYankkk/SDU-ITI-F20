@@ -52,5 +52,17 @@ class Image extends Database {
         <?php
     }
 
+    public function getUserImages() {
+        $sql = "SELECT img, header, description FROM user, image WHERE image.username = user.username";
+        //SELECT img, header, description FROM user, image WHERE image.username = user.username; fungerende sql fra HeidiDB
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+
+        $stmt = $stmt->fetchAll();
+
+        return $result;
+    }
+
 }
 ?>
