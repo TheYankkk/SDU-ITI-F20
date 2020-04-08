@@ -1,16 +1,16 @@
 <?php
 class Image extends Database {
 
-    public function upload($header, $description, $user, $image) {
+    public function upload($title, $description, $user, $image) {
         //https://www.geeksforgeeks.org/php-_files-array-http-file-upload-variables/
-        $convertedImg = "data:".$_FILES['type'].";base64,".base64_encode(file_get_contents($_FILES['image']['tmp_name']));
+        $convertedimage = "data:".$_FILES['type'].";base64,".base64_encode(file_get_contents($_FILES['image']['tmp_name']));
                 
         try {
 
-            $stmt = $this->conn->prepare("INSERT INTO image (header, description, username, img) VALUES(:header, :description, :username, :image)");
+            $stmt = $this->conn->prepare("INSERT INTO image (title, description, username, image) VALUES(:title, :description, :username, :image)");
             
-            $header = filter_var($header, FILTER_SANITIZE_STRING);
-            $stmt->bindParam(':header', $header, PDO::PARAM_STR);
+            $title = filter_var($title, FILTER_SANITIZE_STRING);
+            $stmt->bindParam(':title', $title, PDO::PARAM_STR);
             
             $description = filter_var($description, FILTER_SANITIZE_STRING);
             $stmt->bindParam(':description', $description, PDO::PARAM_STR);
@@ -18,7 +18,7 @@ class Image extends Database {
             $user = filter_var($user, FILTER_SANITIZE_STRING);
             $stmt->bindParam(':username', $user, PDO::PARAM_STR);
             
-            $stmt->bindParam(':image', $convertedImg, PDO::PARAM_STR);
+            $stmt->bindParam(':image', $convertedimage, PDO::PARAM_STR);
             
             if($stmt->execute()){
                 return "You have succesfully uploaded an image";
@@ -38,12 +38,12 @@ class Image extends Database {
         
         <?php 
             foreach ($result as $row) {
-                $header = htmlentities($row['header']);
+                $title = htmlentities($row['title']);
                 $description = htmlentities($row['description']);
                 $username = htmlentities($row['username']);
-                $img = htmlentities($row['img']);
+                $image = htmlentities($row['image']);
         ?>
-            <div class='picture'><b>Title of the image:</b><p><?=$header?></p>
+            <div class='picture'><b>Title of the image:</b><p><?=$title?></p>
             <br>
             <b>Description:</b><p><?=$description?><p>
             <br>
@@ -51,7 +51,7 @@ class Image extends Database {
             <br>
             <b>Image:</b>
             <br>
-            <img src='<?=$img?>' alt=''></img>
+            <image src='<?=$image?>' alt=''></image>
             <br></div>
         <?php
             }

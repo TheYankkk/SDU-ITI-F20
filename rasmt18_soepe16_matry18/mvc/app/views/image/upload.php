@@ -6,9 +6,9 @@
                <form action="/rasmt18_soepe16_matry18/mvc/public/Image/uploadImage" method ="POST" enctype = "multipart/form-data">
                <fieldset>
                     <legend>Upload image:</legend>   
-                    <label for="header">Image title:</label>
+                    <label for="title">Image title:</label>
                     <br>
-                    <input type="text" name="header" placeholder="Select title" autofocus required>
+                    <input type="text" name="title" placeholder="Select title" autofocus required>
                     <br>
                     <label for="description">Description:</label>
                     <br>

@@ -14,7 +14,7 @@ class ImageController extends Controller {
     }
     public function uploadImage() {
         if($this->post()){
-            $viewbag['response'] = $this->model('Image')->upload($_POST['header'],$_POST['description'], 
+            $viewbag['response'] = $this->model('Image')->upload($_POST['title'],$_POST['description'], 
             $_SESSION['username'], $_POST['image']);
             $this->view('image/upload', $viewbag);        
         
