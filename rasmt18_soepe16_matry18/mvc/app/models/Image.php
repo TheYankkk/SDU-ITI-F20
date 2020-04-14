@@ -55,7 +55,7 @@ class Image extends Database {
     public function getUserImages($user) {
 
 
-        $sql = "SELECT img, header, description FROM image, user WHERE image.username = :username";
+        $sql = "SELECT img AS image, header AS title, description FROM image, user WHERE image.username = :username";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':username', $user);
         $stmt->execute();
