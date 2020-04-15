@@ -15,8 +15,8 @@ class ApiController extends Controller {
 
     public function pictures($user, $user_Id) { //hvad skal $user_Id bruges til?
 
-        $user_pictures = $this->model('Image')->getUserImages($user);
-        print_r($user_pictures);
+        $user_pictures = $this->model('Image')->getUserImages($user_Id);
+        //print_r($user_pictures);
         echo json_encode($user_pictures, JSON_PRETTY_PRINT);
     }
 

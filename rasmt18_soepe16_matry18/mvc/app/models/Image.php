@@ -52,12 +52,12 @@ class Image extends Database {
         <?php
     }
 
-    public function getUserImages($user) {
+    public function getUserImages($user_Id) {
 
 
         $sql = "SELECT img AS image, header AS title, description FROM image, user WHERE image.username = :username";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':username', $user);
+        $stmt->bindParam(':username', $user_Id);
         $stmt->execute();
         $result = $stmt->fetchAll();
 
